@@ -1,4 +1,4 @@
-# [Nombre del script]
+# Count A, T, G, C
 
 Fecha:
 
@@ -7,7 +7,7 @@ Fecha:
 - nombre : e-mail
 
 ## Descripción del Problema
-
+Cuenta las ocurrencias de los símbolos 'A', 'T', 'G' y 'C' de una cadena de ADN que se lee a través de un archivo.
 
 
 
