@@ -1,6 +1,6 @@
 """
 SYNOPSIS
-    python3 count_atgc -inputfile <file>
+    python3 count_atgc -inputfile <file> [-n]
 
 DESCRIPTION
     This script counts the occurrence of nucleotides 'A', 'T', 'G' and 'C' in a file with a .txt extension.
@@ -9,11 +9,16 @@ DESCRIPTION
 OPTIONS
     - inputfile
         Path to the input file containing DNA sequences.
+    - n
+        Nucleotides to be counted.
 
 EXAMPLES
-    Command line usage example:
+    Command line usage examples:
         python3 count_atgc.py dna_sequence.txt
+        python3 count_atgc.py dna_sequence.txt -n A C G
+        python3 count_atgc.py dna_sequence.txt -n T
 """
+
 
 # library
 import argparse
@@ -21,16 +26,14 @@ import argparse
 # functions
 
 
-def count_symbols(dna_sequence):
+def count_symbols(dna_sequence, nucleotides):
     """Count occurrences of symbols in a DNA sequence."""
-    count_A = dna_sequence.count('A')
-    count_T = dna_sequence.count('T')
-    count_G = dna_sequence.count('G')
-    count_C = dna_sequence.count('C')
-    return count_A, count_T, count_G, count_C
-
+    counts = {nucleotide: dna_sequence.count(
+        nucleotide) for nucleotide in nucleotides}
+    return counts
 
 # main
+
 
 def main():
     # Create ArgumentParser object
@@ -40,6 +43,10 @@ def main():
     # Add argument for input file
     parser.add_argument('inputfile', type=str,
                         help='Path to the input file containing DNA sequences.')
+
+    # Add optional argument for nucleotides of interest
+    parser.add_argument('-n', '--nucleotides', nargs='+', default=['A', 'T', 'G', 'C'],
+                        help='List of nucleotides to count. Default: A, T, G, C.')
 
     # Parse command-line arguments
     args = parser.parse_args()
@@ -53,13 +60,12 @@ def main():
         return
 
     # Count occurrences of symbols
-    count_A, count_T, count_G, count_C = count_symbols(dna_sequences)
+    counts = count_symbols(dna_sequences, args.nucleotides)
 
     # Print the results
-    print("Occurrences of 'A':", count_A)
-    print("Occurrences of 'T':", count_T)
-    print("Occurrences of 'G':", count_G)
-    print("Occurrences of 'C':", count_C)
+    print("Occurrences of nucleotides:")
+    for nucleotide, count in counts.items():
+        print(f"Occurrences of '{nucleotide}': {count}")
 
 
 if __name__ == "__main__":
