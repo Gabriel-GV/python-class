@@ -1,43 +1,47 @@
-# Nombre del programa 
+# Counter of the occurrence of DNA nucleotides in a file
 
-Este es un script de Python diseñado para ----------- 
+This Python script is designed to count the occurrence of the nucleotides 'A', 'T', 'G' and 'C' in a DNA sequence contained in a text file.
 
-## Uso
-
-
-## Salida
-
-El script imprimirá --------- en la consola. 
-
-## Control de errores
-
-Si el archivo proporcionado no existe, el script generará un mensaje de error. Del mismo modo, si el archivo contiene entradas que no son ---------, el script generará un error.
-
-## Pruebas
-
-El script incluye un conjunto de pruebas unitarias. Puede ejecutar estas pruebas con:
+## Usage
+The script accepts a single argument, the name of the file to read:
 
 ```
+python3 count_atgc.py [file]
 ```
 
-## Datos
+## Output
 
+The script will print to the screen the occurrence of each nucleotide in the provided file. 
 
-## Metadatos y documentación
+## Error control
 
+If the provided file does not exist, the script will generate an error message.
 
-## Código fuente
+## Tests
 
+This script can be tested by running it from the command line by entering a file with a DNA sequence with a known occurrence for each nucleotide.
 
-## Términos de uso
+```
+python3 count_atgc.py [file]
+```
 
-Este script está disponible bajo la licencia [nombre de la licencia]. Consulte el archivo LICENSE para obtener más detalles.
+## Data
+The script is designed to operate on plain text files. There are no restrictions on the number of lines or characters in the file.
 
-## Como citar
+## Metadata and documentation
+This README file presents the script description necessary for its use and implementation from the command line.
 
-Si utiliza este script en su trabajo, por favor cite: [información de citación].
+## Source code
+The source code is available in this repository. Contributions or suggestions are accepted through pull requests.
 
-## Contáctenos
+## Terms of use
 
-Si tiene problemas o preguntas, por favor abra un problema en este repositorio o póngase en contacto con nosotros en: [información de contacto].
+This script is available under the Apache License. See the LICENSE file for more details.
 
+## How to cite
+
+If you use this script in your work, please cite: Garcia, G. (2024). *Counter of the occurrence of DNA nucleotides in a file*.
+
+## Contact Us
+
+If you have problems or questions, please open an issue in this repository or contact us at Gabriel Alberto Garcia Vargas <gabrielg@lcg.unam.mx>.
