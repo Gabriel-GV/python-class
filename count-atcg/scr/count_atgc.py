@@ -7,9 +7,11 @@ DESCRIPTION
     The file is provided as a positional argument from the command line.
 
 OPTIONS
-    - inputfile
+    -inputfile
         Path to the input file containing DNA sequences.
-    - n
+    -n
+        Nucleotides to be counted.
+    --nucleotides
         Nucleotides to be counted.
 
 EXAMPLES
