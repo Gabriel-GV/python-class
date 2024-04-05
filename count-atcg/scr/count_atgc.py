@@ -1,62 +1,66 @@
 """
 SYNOPSIS
-    python <program_name.py> -parameter <value>
+    python3 count_atgc -inputfile <file>
 
 DESCRIPTION
-    Un script que ...
+    This script counts the occurrence of nucleotides 'A', 'T', 'G' and 'C' in a file with a .txt extension.
+    The file is provided as a positional argument from the command line.
 
 OPTIONS
-    - 
+    - inputfile
+        Path to the input file containing DNA sequences.
 
 EXAMPLES
-    Ejemplo de uso:
-        python program_name.py [-parameter] [value]
+    Command line usage example:
+        python3 count_atgc.py dna_sequence.txt
 """
 
-## library
+# library
+import argparse
+
+# functions
 
 
-## functions
-
-def function_name(arguments):
-    """Function Description
-
-    Args:
-        argument (type):description
-
-    Raises:
-        ErrorName: Description
-
-    Returns:
-        type: description
-    """
+def count_symbols(dna_sequence):
+    """Count occurrences of symbols in a DNA sequence."""
+    count_A = dna_sequence.count('A')
+    count_T = dna_sequence.count('T')
+    count_G = dna_sequence.count('G')
+    count_C = dna_sequence.count('C')
+    return count_A, count_T, count_G, count_C
 
 
-## main
+# main
 
-# Definir las variables para contar las ocurrencias
-count_A = 0
-count_T = 0
-count_G = 0
-count_C = 0
+def main():
+    # Create ArgumentParser object
+    parser = argparse.ArgumentParser(
+        description='Count occurrences of DNA symbols in a file.')
 
-# Leer el archivo con la cadena de ADN
-with open('archivo.txt', 'r') as file:
-    dna_sequence = file.read()
+    # Add argument for input file
+    parser.add_argument('inputfile', type=str,
+                        help='Path to the input file containing DNA sequences.')
 
-# Contar las ocurrencias de cada símbolo
-for symbol in dna_sequence:
-    if symbol == 'A':
-        count_A += 1
-    elif symbol == 'T':
-        count_T += 1
-    elif symbol == 'G':
-        count_G += 1
-    elif symbol == 'C':
-        count_C += 1
+    # Parse command-line arguments
+    args = parser.parse_args()
 
-# Imprimir los resultados
-print("Ocurrencias de 'A':", count_A)
-print("Ocurrencias de 'T':", count_T)
-print("Ocurrencias de 'G':", count_G)
-print("Ocurrencias de 'C':", count_C)
+    # Read DNA sequences from the input file
+    try:
+        with open(args.inputfile, 'r') as file:
+            dna_sequences = file.read()
+    except FileNotFoundError:
+        print("Error: File not found.")
+        return
+
+    # Count occurrences of symbols
+    count_A, count_T, count_G, count_C = count_symbols(dna_sequences)
+
+    # Print the results
+    print("Occurrences of 'A':", count_A)
+    print("Occurrences of 'T':", count_T)
+    print("Occurrences of 'G':", count_G)
+    print("Occurrences of 'C':", count_C)
+
+
+if __name__ == "__main__":
+    main()
