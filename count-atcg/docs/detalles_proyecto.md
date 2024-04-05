@@ -1,67 +1,64 @@
-# Count A, T, G, C
+# Counter of the occurrence of DNA nucleotides in a file
 
-Fecha:
+Date: April 5, 2024
 
-**Participantes**:
+**Participants**:
 
-- nombre : e-mail
+- Gabriel Alberto Garcia Vargas : gabrielg@lcg.unam.mx
 
-## Descripción del Problema
-Cuenta las ocurrencias de los símbolos 'A', 'T', 'G' y 'C' de una cadena de ADN que se lee a través de un archivo.
+## Problem description
+Counts the occurrences of the symbols 'A', 'T', 'G' and 'C' of a DNA strand that is read through a file.
 
 
 
-## Especificación de Requisitos
+## Requirements specification
 
-Requisitos funcionales
+Functional requirements 
 
-- Requisito 1
+- The occurrence of the characters 'A', 'C', 'G' and 'T' is accumulated in a different variable for each character.
+- To work correctly, the user must enter the path to the file containing the DNA sequence.
+
+Non-functional requirements
+
+- The script is easy to use but only runs from the command line.
 - Requisito 2
-- Requisito n
-
-Requisitos no funcionales
-
-- Requisito 1
-- Requisito 2
-- Requisito n
+- Program maintenance can be done over relatively long periods of time due to the simple structure of the script.
 
 
-## Análisis y Diseño
+## Analysis and design
 
 ```
-# Logica del código 
+python3 count_atgc.py <file> [-n]
 ```
 
-Formato de los archivos input que recibe el programa, así como el formato de los archivos output o mensajes a imprimir en pantalla.
+The input file must be a plain text file with a .txt extension.
 
 
-#### Caso de uso: 
+#### Test: 
 
 ```
          +---------------+
-         |   Usuario     |
+         |   User        |
          +-------+-------+
                  |
-                 | 1. Proporciona archivo de entrada/ o parametros en la términal 
+                 | 1. User provides input file
                  v
          +-------+-------+
-         |   Programa    |
+         |   Program     |
          |               |
          |               |
          |               |
          +---------------+
 ```
 
-- **Actor**: Usuario
-- **Descripción**: El actor proporciona un archivo de entrada ...
+- **Actor**: User
+- **Description**: The user provides the input file from the command line and can use the -n or --nucleotides option to count the occurrence of a particular nucleotide.
 - **Flujo principal**:
 
-	1. ...
-	1. ...
-	1. ...
+	1. The user provides the input file from the command line.
+	1. The occurrence of the characters 'A', 'C', 'G' and 'T' in the provided file is counted.
+	1. The occurrence of the characters is printed.
 	
-- **Flujos alternativos**:
-	- Si no se proporciona un archivo entonces el programa deberá ...
-	- Si el formato del archivo no es correcto, imprimir a pantalla mensaje de error
-	- ...         
+- **Alternative flows**:
+	- If a file is not provided, the program should print an error message to the screen.       
 
