@@ -15,8 +15,8 @@ OPTIONS
 EXAMPLES
     Command line usage examples:
         python3 count_atgc.py dna_sequence.txt
-        python3 count_atgc.py dna_sequence.txt -n A C G
-        python3 count_atgc.py dna_sequence.txt -n T
+        python3 count_atgc.py dna_sequence.txt -n A T
+        python3 count_atgc.py dna_sequence.txt --nucleotides A T
 """
 
 
