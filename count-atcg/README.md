@@ -3,15 +3,15 @@
 This Python script is designed to count the occurrence of the nucleotides 'A', 'T', 'G' and 'C' in a DNA sequence contained in a text file.
 
 ## Usage
-The script accepts a single argument, the name of the file to read:
+The script accepts two arguments: the name of the file to read (positional argument) and a particular nucleotide to be searched with -n or --nucleotides (optional argument).
 
 ```
-python3 count_atgc.py [file]
+python3 count_atgc.py <file> [-n]
 ```
 
 ## Output
 
-The script will print to the screen the occurrence of each nucleotide in the provided file. 
+The script will print to the screen the occurrence of each nucleotide in the provided file or the occurrance of the nucleotides indicated with te option -n.
 
 ## Error control
 
@@ -22,7 +22,7 @@ If the provided file does not exist, the script will generate an error message.
 This script can be tested by running it from the command line by entering a file with a DNA sequence with a known occurrence for each nucleotide.
 
 ```
-python3 count_atgc.py [file]
+python3 count_atgc.py <file>
 ```
 
 ## Data
