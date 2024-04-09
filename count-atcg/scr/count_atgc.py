@@ -7,15 +7,17 @@ DESCRIPTION
     The file is provided as a positional argument from the command line.
 
 OPTIONS
-    -inputfile
+
+    inputfile  
         Path to the input file containing DNA sequences.
-    -n
+        
+    -n  --nucleotides
         Nucleotides to be counted.
-    --nucleotides
-        Nucleotides to be counted.
+
 
 EXAMPLES
     Command line usage examples:
+    
         python3 count_atgc.py dna_sequence.txt
         python3 count_atgc.py dna_sequence.txt -n A T
         python3 count_atgc.py dna_sequence.txt --nucleotides A T
@@ -47,7 +49,7 @@ def main():
                         help='Path to the input file containing DNA sequences.')
 
     # Add optional argument for nucleotides of interest
-    parser.add_argument('-n', '--nucleotides', nargs='+', default=['A', 'T', 'G', 'C'],
+    parser.add_argument('-n', '--nucleotides', nargs='+', default=['A', 'T', 'G', 'C'],  ## ToDo: Podrias agregar choices=[
                         help='List of nucleotides to count. Default: A, T, G, C.')
 
     # Parse command-line arguments
