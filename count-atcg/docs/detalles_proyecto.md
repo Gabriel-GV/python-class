@@ -10,55 +10,67 @@ Date: April 5, 2024
 Counts the occurrences of the symbols 'A', 'T', 'G' and 'C' of a DNA strand that is read through a file.
 
 
+## Requirements
 
-## Requirements specification
+### Functional Requirements
 
-Functional requirements 
+- The program should accumulate the occurrence of the nucleotide characters 'A', 'C', 'G', and 'T' each into distinct variables.
+- The program should accept a path to a DNA sequence file as a command line argument.
+- The nucleotides to be counted should be passed as an optional command line argument.
+- If the optional nucleotide argument is omitted, the program should default to counting all 4 nucleotides: 'A', 'C', 'G', and 'T'.
 
-- The occurrence of the characters 'A', 'C', 'G' and 'T' is accumulated in a different variable for each character.
-- To work correctly, the user must enter the path to the file containing the DNA sequence.
+### Non-functional Requirements
 
-Non-functional requirements
-
-- The script is easy to use but only runs from the command line.
-- Requisito 2
-- Program maintenance can be done over relatively long periods of time due to the simple structure of the script.
-
+- The program will be developed in the Python programming language to ensure widespread compatibility and ease of use.
+- Reading of command line arguments should be implemented using the argparse library for Python to allow for flexible and user-friendly command-line interfaces.
+- Code developed for the program should adhere to PEP8 standards for Python code style. This enhances readability and maintainability of the code.
+- The program should handle errors gracefully, providing meaningful error messages for potential issues like incorrect file paths or invalid file content.
+- The efficiency of implementation should be considered, as DNA sequence files can be large and require significant processing. The program should aim to handle large input files swiftly.
 
 ## Analysis and design
 
-```
-python3 count_atgc.py <file> [-n]
-```
-
-The input file must be a plain text file with a .txt extension.
-
-
-#### Test: 
+Based on the requirements, we might have the following case:
 
 ```
          +---------------+
          |   User        |
          +-------+-------+
                  |
-                 | 1. User provides input file
+                 | 1. User provides input file and the nucleotides to be counted
                  v
          +-------+-------+
-         |   Program     |
+         |   count-atgc  |
          |               |
          |               |
          |               |
          +---------------+
 ```
 
-- **Actor**: User
-- **Description**: The user provides the input file from the command line and can use the -n or --nucleotides option to count the occurrence of a particular nucleotide.
-- **Flujo principal**:
+### Use Case 1: Nucleotide Counting
 
-	1. The user provides the input file from the command line.
-	1. The occurrence of the characters 'A', 'C', 'G' and 'T' in the provided file is counted.
-	1. The occurrence of the characters is printed.
-	
-- **Alternative flows**:
-	- If a file is not provided, the program should print an error message to the screen.       
+**Actor**: User
+
+**Main Flow**:
+
+- The user starts the program from the command line, providing the path to the DNA sequence file and optionally, the nucleotides they wish to count.
+- The system verifies if the file exists.
+- The system reads and loads the file content into memory.
+- The system counts the occurrence of each provided nucleotide (or all nucleotides if none provided) in the loaded DNA sequence.
+- The system outputs the count of each nucleotide to the command line.
+
+**Alternative Flow A:**
+
+1a. The provided file does not exist or cannot be read: 
+	1a1. The system throws an error and ends execution.
+
+**Alternative Flow B:**
+
+1b. No nucleotides to count are provided by user: 
+	1b1. The system defaults to counting the occurrence of all nucleotides ('A', 'C', 'G', 'T').
+
+**Alternative Flow C:**
+
+3c. The provided file is empty: 
+	3c1. The system throws an error and ends execution.
+
 
