@@ -20,13 +20,13 @@ For this test case, provide incorrect file paths or files that do not exist and 
 - The FILE doesn´t exists
 
 ```{python}
-python count-atcg the_file_does_not_exist.txt -n ACGT
+python count_atgc.py the_file_does_not_exist.txt -n ACGT
 ```
 
 - The file exists but not in this PATH ( create the file in the test directory and use it for this case)
 
 ```{python}
-python count-atcg /incorrect/path/to/file.txt -n ACGT
+python count_atgc.py /incorrect/path/to/file.txt -n ACGT
 ```
 ---
 
@@ -35,7 +35,7 @@ python count-atcg /incorrect/path/to/file.txt -n ACGT
 Create a text file with an explicit DNA sequence (Example: "ATCGGGTAC"), where you know the correct count of each nucleotide (2 'A's, 2 'T's, 3 'G's, 2 'C's in this example). The result from the program should match the exact counts.
 
 ```{python}
-python count-atcg dna_sequence.txt -n ACGT
+python count_atgc.py dna_sequence.txt -n ACGT
 ```
 
 The output 
@@ -54,7 +54,7 @@ T: 2
 Test with a file that has the DNA sequence in lowercase (Example: "atcgggtac"). Most implementations should consider both uppercase and lowercase, meaning 'A' and 'a' should be counted as the same element.
 
 ```{python}
-python count-atcg lowercase_dna_sequence.txt -n ACGT
+python count_atgc.py lowercase_dna_sequence.txt -n ACGT
 ```
 
 The output
@@ -73,7 +73,7 @@ T: 2
 Test with a file that has invalid characters, i.e., characters apart from 'A', 'T', 'C' and 'G' (or their respective lowercase), for exmaple "ATCGXXXTAC". Your program should either ignore these characters or handle this in some specific way.
 
 ```{python}
-python count-atcg invalid_dna_sequence.txt -n ACGT
+python count_atgc.py invalid_dna_sequence.txt -n ACGT
 ```
 
 The output:  (The X are ignored)
@@ -92,7 +92,7 @@ T: 2
 This is another important test case to assure that your program can correctly handle the situation where the provided file is empty.
 
 ```{python}
-python count-atcg empty_file.txt -n ACGT
+python count_atgc.py empty_file.txt -n ACGT
 ```
 
 The output: 
@@ -111,7 +111,7 @@ T: 0
 Test your program with a very large DNA file to see how it handles large files and to measure how long it takes to process.
 
 ```{python}
-time python count-atcg large_dna_file.txt -n ACGT
+time python count_atgc.py large_dna_file.txt -n ACGT
 ```
 
 The output: 
