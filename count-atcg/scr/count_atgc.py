@@ -32,6 +32,10 @@ import argparse
 
 def count_symbols(dna_sequence, nucleotides):
     """Count occurrences of symbols in a DNA sequence."""
+    # Convert both the DNA sequence and nucleotides to lowercase
+    dna_sequence = dna_sequence.lower()
+    nucleotides = [nucleotide.lower() for nucleotide in nucleotides]
+    # Count occurrences of symbols
     counts = {nucleotide: dna_sequence.count(
         nucleotide) for nucleotide in nucleotides}
     return counts
@@ -49,7 +53,7 @@ def main():
                         help='Path to the input file containing DNA sequences.')
 
     # Add optional argument for nucleotides of interest
-    parser.add_argument('-n', '--nucleotides', nargs='+', default=['A', 'T', 'G', 'C'],  ## ToDo: Podrias agregar choices=[
+    parser.add_argument('-n', '--nucleotides', nargs='+', default=['A', 'T', 'G', 'C'],
                         help='List of nucleotides to count. Default: A, T, G, C.')
 
     # Parse command-line arguments
