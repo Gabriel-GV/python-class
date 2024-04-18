@@ -63,8 +63,8 @@ def main():
     try:
         with open(args.inputfile, 'r') as file:
             dna_sequences = file.read()
-    except FileNotFoundError:
-        print("Error: File not found.")
+    except IOError as ex:
+        print("Sorry, couldn't find the file: " + ex.strerror)
         return
 
     # Count occurrences of symbols
