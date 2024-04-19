@@ -32,8 +32,7 @@ import argparse
 
 def count_symbols(dna_sequence, nucleotides):
     """Count occurrences of symbols in a DNA sequence."""
-    # Convert both the DNA sequence and nucleotides to lowercase
-    dna_sequence = dna_sequence.lower()
+    # Convert nucleotides to lowercase
     nucleotides = [nucleotide.lower() for nucleotide in nucleotides]
     # Count occurrences of symbols
     counts = {nucleotide: dna_sequence.count(
@@ -67,6 +66,12 @@ def main():
             if len(dna_sequences) == 0:
                 print("Sorry, the file is empty.")
                 return
+            # Check if the file contains uppercase letters
+            if any(char.isupper() for char in dna_sequences):
+                # Convert the entire content to lowercase
+                dna_sequences = dna_sequences.lower()
+                print(
+                    "The file contained uppercase letters. Converted to lowercase for counting.")
     except IOError as ex:
         print("Sorry, couldn't find the file: " + ex.strerror)
         return
