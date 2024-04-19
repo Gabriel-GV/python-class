@@ -34,9 +34,20 @@ def count_symbols(dna_sequence, nucleotides):
     """Count occurrences of symbols in a DNA sequence."""
     # Convert nucleotides to lowercase
     nucleotides = [nucleotide.lower() for nucleotide in nucleotides]
-    # Count occurrences of symbols
-    counts = {nucleotide: dna_sequence.count(
-        nucleotide) for nucleotide in nucleotides}
+    # List to store counts
+    counts = [0] * len(nucleotides)
+    # Iterate over each character in the DNA sequence
+    for char in dna_sequence:
+        # Convert the character to lowercase
+        char_lower = char.lower()
+        # Check if the character is a valid nucleotide
+        if char_lower in nucleotides:
+            # Increment the count for the corresponding nucleotide
+            index = nucleotides.index(char_lower)
+            counts[index] += 1
+        else:
+            # Print an error message for invalid characters
+            print(f"Sequence contains '{char}', it is an invalid character.")
     return counts
 
 # main
@@ -72,17 +83,17 @@ def main():
                 dna_sequences = dna_sequences.lower()
                 print(
                     "The file contained uppercase letters. Converted to lowercase for counting.")
+            # Count occurrences of symbols
+            counts = count_symbols(dna_sequences, args.nucleotides)
+            # Print the results
+            print("\nOccurrences of nucleotides:")
+            for i in range(len(args.nucleotides)):
+                nucleotide = args.nucleotides[i]
+                count = counts[i]
+                print(f"Occurrences of '{nucleotide}': {count}")
     except IOError as ex:
         print("Sorry, couldn't find the file: " + ex.strerror)
         return
-
-    # Count occurrences of symbols
-    counts = count_symbols(dna_sequences, args.nucleotides)
-
-    # Print the results
-    print("Occurrences of nucleotides:")
-    for nucleotide, count in counts.items():
-        print(f"Occurrences of '{nucleotide}': {count}")
 
 
 if __name__ == "__main__":
