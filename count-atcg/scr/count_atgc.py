@@ -63,6 +63,10 @@ def main():
     try:
         with open(args.inputfile, 'r') as file:
             dna_sequences = file.read()
+            # Check if the file is empty
+            if len(dna_sequences) == 0:
+                print("Sorry, the file is empty.")
+                return
     except IOError as ex:
         print("Sorry, couldn't find the file: " + ex.strerror)
         return
