@@ -20,7 +20,7 @@ EXAMPLES
     
         python3 count_atgc.py dna_sequence.txt
         python3 count_atgc.py dna_sequence.txt -n A T
-        python3 count_atgc.py dna_sequence.txt --nucleotides A T
+        python3 count_atgc.py dna_sequence.txt --nucleotides g c
 """
 
 
@@ -33,9 +33,11 @@ import argparse
 def count_symbols(dna_sequence, nucleotides):
     """Count occurrences of symbols in a DNA sequence."""
     # Convert nucleotides to lowercase
-    nucleotides = [nucleotide.lower() for nucleotide in nucleotides]
+    nucleotides = set(nucleotide.lower() for nucleotide in nucleotides)
     # List to store counts
     counts = [0] * len(nucleotides)
+    # List to store invalid characters
+    invalid_chars = []
     # Iterate over each character in the DNA sequence
     for char in dna_sequence:
         # Convert the character to lowercase
@@ -43,12 +45,12 @@ def count_symbols(dna_sequence, nucleotides):
         # Check if the character is a valid nucleotide
         if char_lower in nucleotides:
             # Increment the count for the corresponding nucleotide
-            index = nucleotides.index(char_lower)
+            index = list(nucleotides).index(char_lower)
             counts[index] += 1
         else:
-            # Print an error message for invalid characters
-            print(f"Sequence contains '{char}', it is an invalid character.")
-    return counts
+            # Add invalid character to the list
+            invalid_chars.append(char)
+    return counts, invalid_chars
 
 # main
 
@@ -64,6 +66,7 @@ def main():
 
     # Add optional argument for nucleotides of interest
     parser.add_argument('-n', '--nucleotides', nargs='+', default=['A', 'T', 'G', 'C'],
+                        choices=['A', 'T', 'G', 'C', 'a', 't', 'g', 'c'],
                         help='List of nucleotides to count. Default: A, T, G, C.')
 
     # Parse command-line arguments
@@ -84,13 +87,21 @@ def main():
                 print(
                     "The file contained uppercase letters. Converted to lowercase for counting.")
             # Count occurrences of symbols
-            counts = count_symbols(dna_sequences, args.nucleotides)
+            counts, invalid_chars = count_symbols(
+                dna_sequences, args.nucleotides)
             # Print the results
             print("\nOccurrences of nucleotides:")
             for i in range(len(args.nucleotides)):
                 nucleotide = args.nucleotides[i]
                 count = counts[i]
                 print(f"Occurrences of '{nucleotide}': {count}")
+            # Print invalid characters
+            if invalid_chars:
+                print("\nInvalid characters found in the file:")
+                invalid_chars_filtered = [char for char in invalid_chars if char not in {
+                    'A', 'T', 'G', 'C', 'a', 't', 'g', 'c'}]
+                print(" ".join(invalid_chars_filtered))
+
     except IOError as ex:
         print("Sorry, couldn't find the file: " + ex.strerror)
         return
