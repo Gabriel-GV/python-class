@@ -28,6 +28,13 @@ python count_atgc.py the_file_does_not_exist.txt -n ACGT
 ```{python}
 python count_atgc.py /incorrect/path/to/file.txt -n ACGT
 ```
+
+The output 
+
+```
+Sorry, couldn't find the file: No such file or directory
+```
+
 ---
 
 **Test Case 2: Output Verification**
@@ -70,19 +77,22 @@ T: 2
 
 **Test Case 4: Handling Invalid Characters**
 
-Test with a file that has invalid characters, i.e., characters apart from 'A', 'T', 'C' and 'G' (or their respective lowercase), for exmaple "ATCGXXXTAC". Your program should either ignore these characters or handle this in some specific way.
+Test with a file that has invalid characters, i.e., characters apart from 'A', 'T', 'C' and 'G' (or their respective lowercase), for exmaple "ATCGXXXTAC". Your program should handle this in some specific way.
 
 ```{python}
 python count_atgc.py invalid_dna_sequence.txt -n ACGT
 ```
 
-The output:  (The X are ignored)
+The output:  
 
 ```
 A: 2
 C: 2
 G: 1
 T: 2
+
+Invalid characters found in the file:
+x x x
 ```
 
 ---
@@ -98,10 +108,7 @@ python count_atgc.py empty_file.txt -n ACGT
 The output: 
 
 ```
-A: 0
-C: 0
-G: 0
-T: 0
+Sorry, the file is empty.
 ```
 
 ---
