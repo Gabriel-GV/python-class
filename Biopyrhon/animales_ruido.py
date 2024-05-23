@@ -18,7 +18,7 @@ perro = Perro()
 gato = Gato()
 
 # Llamando al método sobrescrito
-print(animal.hacer_sonido())  # Salida: Sonido genérico de animal
-print(perro.hacer_sonido())   # Salida: Ladrido
-print(gato.hacer_sonido())    # Salida: Maullido
+print(animal.hacer_sonido())  
+print(perro.hacer_sonido())   
+print(gato.hacer_sonido())    
 print(gato.usar_arenero())
