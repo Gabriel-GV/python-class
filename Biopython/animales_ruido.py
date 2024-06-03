@@ -11,6 +11,12 @@ class Gato(Animal):
         return "Meow"
     def usar_arenero(self):
         return "El arenero esta sucio"
+        
+# Definimos la clase gato:
+class Gato(Animal):
+    def __init__(self, nombre, edad, usa_arenero):
+        super().__init__(nombre, edad) #Para inicializar los atrbutos heredados
+        self.usa_arenero = usa_arenero # Es un atributi y no un método.
 
 # Creando instancias de cada clase
 animal = Animal()
