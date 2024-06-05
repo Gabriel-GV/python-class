@@ -3,7 +3,7 @@ SYNOPSIS
     python <program_name.py> -parameter <value>
 
 DESCRIPTION
-    Un script que ...
+    Un script que ...En este programa bla blab bla
 
 OPTIONS
     - 
